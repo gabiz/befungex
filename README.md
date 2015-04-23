@@ -11,6 +11,14 @@ Hello world:
 
     0"!dlroW ,olleH">:#,_@
 
+Another Hello World!
+
+    >              v
+    v  ,,,,,"Hello"<
+    >48*,          v
+    v,,,,,,"World!"<
+    >25*,@
+
 Replicator:
 
     :0g,:93+`#@_1+
@@ -20,6 +28,8 @@ Replicator:
 Just pass a filename to the interpreter:
 
     $ mix run -e 'BX.run(["examples/hello.bf"])'
+
+    $ mix run -e 'BX.run(["examples/hello2.bf"])'
 
     $ mix run -e 'BX.run(["examples/replicator.bf"])'
 
