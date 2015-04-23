@@ -13,7 +13,7 @@ Hello world:
 
 Replicator:
 
-   :0g,:93+`#@_1+
+    :0g,:93+`#@_1+
 
 ## Usage
 
