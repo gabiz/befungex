@@ -11,18 +11,17 @@ Hello world:
 
     0"!dlroW ,olleH">:#,_@
 
-Count:
+Replicator:
 
-    v                                        @
-    > & 00p 0 10p ;; 0. ;; " ", ;; > 00g 10g w @
-    v                                        <
-    > 10g 1+ 10p ;; 10g. ;; " ",   ^
+   :0g,:93+`#@_1+
 
 ## Usage
 
 Just pass a filename to the interpreter:
 
     $ mix run -e 'BX.run(["examples/hello.bf"])'
+
+    $ mix run -e 'BX.run(["examples/replicator.bf"])'
 
 ## References
 
