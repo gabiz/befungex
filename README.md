@@ -25,5 +25,5 @@ Just pass a filename to the interpreter:
 
 ## References
 
-* [BeFunge-93 Wikipedia](http://en.wikipedia.org/wiki/Befunge)
+* [Befunge-93 Wikipedia](http://en.wikipedia.org/wiki/Befunge)
 * [Befunge on Esolang](http://esolangs.org/wiki/Befunge)
