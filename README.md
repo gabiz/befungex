@@ -23,15 +23,19 @@ Replicator:
 
     :0g,:93+`#@_1+
 
+## Build
+
+    $ mix escript.build
+
 ## Usage
 
 Just pass a filename to the interpreter:
 
-    $ mix run -e 'BX.run(["examples/hello.bf"])'
+    $ ./befungex examples/hello.bf
 
-    $ mix run -e 'BX.run(["examples/hello2.bf"])'
+    $ ./befungex examples/hello2.bf
 
-    $ mix run -e 'BX.run(["examples/replicator.bf"])'
+    $ ./befungex examples/replicator.bf
 
 ## References
 

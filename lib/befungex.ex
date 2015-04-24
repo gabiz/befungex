@@ -1,12 +1,16 @@
 defmodule BX do
   alias BX.Engine
 
+  def main(argv) do
+    parse_args(argv)
+  end
+
   def run(argv) do
     parse_args(argv)
   end
 
   def help do
-    IO.puts "usage: mix run -e 'BX.run([\"filename\"])'"
+    IO.puts "usage: ./befungex <filename>"
   end
 
   def run_interpreter(filename) do

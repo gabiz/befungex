@@ -5,6 +5,7 @@ defmodule BX.Mixfile do
     [app: :befungex,
      version: "0.0.1",
      elixir: "~> 1.0",
+     escript: [main_module: BX],
      deps: deps]
   end
 
