@@ -54,15 +54,15 @@ defmodule BX.Engine do
 
     case to_atom(op) do
       :+ -> [a + b]
-      :- -> [a - b]
+      :- -> [b - a]
       :* -> [a * b]
-      :/ -> [div(a, b)]
+      :/ -> [div(b, a)]
       :% -> [rem(b, a)]
       :! -> [if a == 0 do 1 else 0 end, b]
       :'`' -> [if b > a do 1 else 0 end]
       :':' -> [a, a, b]
       :'\\' -> [b, a]
-      :'$' -> []
+      :'$' -> [b]
     end
   end
 
@@ -129,7 +129,9 @@ defmodule BX.Engine do
   Execute an instruction
   """
   def execute_instruction(instruction, %{cursor: cursor, stack: stack, pushMode: pushMode, output: output} = engine) do
+    # IO.puts "instruction #{instruction} stack #{inspect stack}"
     cond do
+      instruction == nil -> engine # noop to handle shorted lines
       instruction == "@" -> raise "end of file not expected"
       instruction == "\"" -> %{ engine | pushMode: !pushMode }
       pushMode -> %{ engine | stack: push_stack(stack, to_codepoint(instruction)) }
@@ -141,7 +143,7 @@ defmodule BX.Engine do
       instruction == "#" -> advance(engine)
       instruction == "g" -> get_operation(engine)
       instruction == "p" -> put_operation(engine)
-      instruction == "&" -> %{ engine | stack: push_stack(stack, IO.gets "Enter a digit: ")}
+      instruction == "&" -> %{ engine | stack: push_stack(stack, IO.gets("Enter a digit: ") |> Integer.parse |> elem(0))}
       instruction != " " -> exec_operation instruction, engine
       true -> engine
     end |> advance
