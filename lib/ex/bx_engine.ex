@@ -179,4 +179,26 @@ defmodule BX.Engine do
   def output_result(engine) do engine.output end
 
 
+  @doc """
+  Output space in string format
+  """
+  def output_space(engine) do
+    %{ x: pos_x, y: pos_y, size_x: size_x, size_y: size_y } = engine.cursor 
+    res = 
+    for y <- Enum.to_list 0..(size_y-1) do
+      for x <- Enum.to_list 0..(size_x-1) do
+        # IO.puts "{#{x}, #{y}}"
+        char = engine.space[%{x: x, y: y}]
+        if {x, y} == {pos_x, pos_y} do
+          "<span style=\"background:red\">#{char}</span>" 
+        else
+          if char == nil do "" else char end
+        end
+      end  ++ ["\n"]
+    end |> List.flatten |> Enum.reverse |> Enum.reduce(&<>/2)
+
+    # IO.puts "res = #{inspect res }"
+    res
+  end
+
 end

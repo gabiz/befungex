@@ -27,15 +27,15 @@ defmodule BX.EngineTest do
 
   test "Performs operation" do
     assert Engine.perform_operation("+", [2, 1]) == [3]
-    assert Engine.perform_operation("-", [2, 1]) == [1]
+    assert Engine.perform_operation("-", [2, 1]) == [-1]
     assert Engine.perform_operation("*", [2, 1]) == [2]
-    assert Engine.perform_operation("/", [2, 1]) == [2]
+    assert Engine.perform_operation("/", [2, 1]) == [0]
     assert Engine.perform_operation("%", [2, 1]) == [1]
     assert Engine.perform_operation("!", [2, 1]) == [0, 1]
     assert Engine.perform_operation("`", [2, 1]) == [0]
     assert Engine.perform_operation(":", [2, 1]) == [2, 2, 1]
     assert Engine.perform_operation("\\", [2, 1]) == [1, 2]
-    assert Engine.perform_operation("$", [2, 1]) == []
+    assert Engine.perform_operation("$", [2, 1]) == [1]
   end
 
   test "New direction" do
@@ -129,4 +129,28 @@ v,,,,,,"World!"<
     assert stack == [13, 0]
     assert output == ":0g,:93+`#@_1+"
   end
+
+  test "generates an output space" do
+    code = """
+>              v
+v  ,,,,,"Hello"<
+>48*,          v
+v,,,,,,"World!"<
+>25*,@
+"""
+    engine = createEngine(code) |> Engine.execute
+    %{cursor: cursor, stack: stack, output: output} = engine 
+    assert Cursor.position(cursor) == %{x: 1, y: 0}
+    assert Engine.output_space(engine) == """
+><span style=\"background:red\"> </span>             v
+v  ,,,,,"Hello"<
+>48*,          v
+v,,,,,,"World!"<
+>25*,@
+"""
+# ><div style style=\"background:red\"> </div>              v
+
+
+  end
+
 end
